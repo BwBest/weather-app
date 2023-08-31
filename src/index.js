@@ -1,1 +1,2 @@
-console.log('Weatherapp');
+import './style.css';
+import * as ui from './ui.js';

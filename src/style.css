@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root{
+    --white-text: #fff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: url('./img/cloud.jpg') center center/cover;
+    color: var(--white-text);
+    font-family: 'Inter', sans-serif;
+}
+
+h1{
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+p{
+    font-size: 1.25rem;
+}
+
+.hidden{
+    display: none;
+}
+
+#container{
+    background: linear-gradient(170deg, rgba(255, 255, 255, 0.00) 0%, #7FA0AB 44.22%, #2A697C 108.85%);
+    
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#location-div{
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+#weather-icon{
+}
+
+#days-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#days-div div{
+    margin: 0 0.75rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#days-div div i{
+    margin-bottom: 0.75rem;
+}
+
+#days-div div p{
+    margin-bottom: 0.25rem;
+}
