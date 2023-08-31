@@ -126,7 +126,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _ui_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui.js */ \"./src/ui.js\");\n\r\n\r\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _ui_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui.js */ \"./src/ui.js\");\n\r\n\r\n\r\nlet selectedCity = 'auto:ip';\r\n\r\nasync function getData() {\r\n  const data = await fetch(\r\n    `https://api.weatherapi.com/v1/current.json?key=bb0f91bbe7304e7286c165412233008&q=${selectedCity}`,\r\n    { mode: 'cors' }\r\n  );\r\n  const responseCurrent = await data.json();\r\n\r\n  const forecastData = await fetch(\r\n    `https://api.weatherapi.com/v1/forecast.json?key=bb0f91bbe7304e7286c165412233008&q=${selectedCity}&days=7`,\r\n    { mode: 'cors' }\r\n  );\r\n  const responseForecast = await forecastData.json();\r\n\r\n  return {\r\n    cityName: responseCurrent.location.name,\r\n    countryName: responseCurrent.location.country,\r\n    currentTemp: responseCurrent.current.temp_c,\r\n  };\r\n}\r\n\r\ngetData();\r\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
 
 /***/ }),
 
