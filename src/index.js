@@ -2,6 +2,7 @@ import './style.css';
 import * as ui from './ui.js';
 
 let selectedCity = 'auto:ip';
+const forecastArray = [];
 
 async function getData() {
   const data = await fetch(
@@ -16,11 +17,30 @@ async function getData() {
   );
   const responseForecast = await forecastData.json();
 
+  const forecastsJSON = responseForecast.forecast.forecastday;
+
+  forecastsJSON.forEach((item) => {
+    const fDate = new Date(item.date);
+    forecastArray.push({
+      dayName: calculateDay(fDate.getDay()),
+      temperature: item.day.avgtemp_c,
+      conditionText: item.day.condition.text,
+    });
+
+    console.log(forecastArray);
+  });
+
   return {
     cityName: responseCurrent.location.name,
     countryName: responseCurrent.location.country,
     currentTemp: responseCurrent.current.temp_c,
+    forecastArray,
   };
+}
+
+function calculateDay(day) {
+  const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+  return days[day];
 }
 
 getData();
