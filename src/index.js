@@ -10,6 +10,7 @@ function initalize() {
     console.log(value);
     ui.updateTemperature(value.currentTemp);
     ui.updateLocation(value.cityName, value.countryName);
+    ui.updateWeatherIcon(value.forecastArray[0].condition);
   });
 }
 
