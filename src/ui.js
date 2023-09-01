@@ -1,3 +1,11 @@
+import clearImg from './img/clear.jpg';
+import cloudImg from './img/cloud.jpg';
+import cloudSunImg from './img/cloud-sun.jpg';
+import cloudSunRainImg from './img/cloud-sun-rain.jpg';
+import rainImg from './img/rain.jpg';
+import stormImg from './img/storm.jpg';
+import snowImg from './img/snow.jpg';
+
 export function updateLocation(city, country) {
   const locText = document.querySelector('#location-text');
   locText.textContent = `${city}, ${country}`;
@@ -21,9 +29,11 @@ export function updateWeatherIcon(type, iconRef = 'main') {
 
   if (type === 1000) {
     weatherIcon.classList = `fa-solid ${size} fa-sun`;
+    changeBackground(clearImg);
   }
   if (type === 1003) {
     weatherIcon.classList = `fa-solid ${size} fa-cloud-sun`;
+    changeBackground(cloudSunImg);
   }
   if (
     type === 1006 ||
@@ -33,6 +43,7 @@ export function updateWeatherIcon(type, iconRef = 'main') {
     type === 1147
   ) {
     weatherIcon.classList = `fa-solid ${size} fa-cloud`;
+    changeBackground(cloudImg);
   }
   if (
     type === 1063 ||
@@ -47,12 +58,15 @@ export function updateWeatherIcon(type, iconRef = 'main') {
     type === 1201
   ) {
     weatherIcon.classList = `fa-solid ${size} fa-cloud-rain`;
+    changeBackground(rainImg);
   }
   if (type === 1063 || type === 1183 || type === 1186) {
     weatherIcon.classList = `fa-solid ${size} fa-cloud-sun-rain`;
+    changeBackground(cloudSunRainImg);
   }
   if (type === 1087 || type === 1240 || type === 1243 || type === 1246) {
     weatherIcon.classList = `fa-solid ${size} fa-cloud-showers-heavy`;
+    changeBackground(stormImg);
   }
   if (
     type === 1069 ||
@@ -80,7 +94,12 @@ export function updateWeatherIcon(type, iconRef = 'main') {
     type === 1282
   ) {
     weatherIcon.classList = `fa-solid ${size} fa-snowflake`;
+    changeBackground(snowImg);
   }
+}
+
+function changeBackground(bgUrl) {
+  document.body.style.background = `url(${bgUrl}) center center/cover`;
 }
 
 export function updateDay(

@@ -10,7 +10,7 @@
 }
 
 body{
-    background: url('./img/cloud.jpg') center center/cover;
+    background: url('./img/snow.jpg') center center/cover;
     color: var(--white-text);
     font-family: 'Inter', sans-serif;
 }
