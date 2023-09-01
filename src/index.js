@@ -18,11 +18,17 @@ function initalize() {
 
 function configureDays() {
   for (let i = 0; i < forecastArray.length; i++) {
+    let activeDay = false;
+    if (i === 0) {
+      activeDay = true;
+    }
+
     ui.updateDay(
       `day${i}`,
       forecastArray[i].temperature,
       forecastArray[i].condition,
-      forecastArray[i].dayName
+      forecastArray[i].dayName,
+      activeDay
     );
   }
 }

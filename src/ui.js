@@ -119,5 +119,8 @@ export function updateDay(
   dayTextEl.textContent = dayName;
 
   if (isActive) {
+    divEl.style.background = 'rgba(255, 255, 255, 0.274)';
+    divEl.style.padding = '0.5rem 0.25rem';
+    divEl.style.borderRadius = '5px';
   }
 }
