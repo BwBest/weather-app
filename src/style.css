@@ -13,6 +13,7 @@ body{
     background: url('./img/snow.jpg') center center/cover;
     color: var(--white-text);
     font-family: 'Inter', sans-serif;
+    overflow: hidden;
 }
 
 h1{
@@ -61,9 +62,6 @@ p{
     cursor: pointer;
 }
 
-#weather-icon{
-}
-
 #days-div{
     display: flex;
     align-items: center;
@@ -85,4 +83,18 @@ p{
 
 #days-div div p{
     margin-bottom: 0.25rem;
+}
+
+@media (max-width: 1024px){
+    h1{
+        font-size: 3rem;
+        font-weight: 400;
+    }
+    
+    #days-div div p{
+        font-size: 0.8rem;
+    }
+    #days-div div{
+        margin: 0 0.3rem;
+    }
 }
