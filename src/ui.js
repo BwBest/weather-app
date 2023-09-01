@@ -83,13 +83,21 @@ export function updateWeatherIcon(type, iconRef = 'main') {
   }
 }
 
-export function updateDay(day, temperature, weather, isActive = false) {
-  const divEl = document.querySelector(`#${day}`);
-  const temperatureEl = document.querySelector(`#${day} .temperature-p`);
-  const weatherIcoEl = document.querySelector(`#${day} i`);
+export function updateDay(
+  dayEl,
+  temperature,
+  weather,
+  dayName,
+  isActive = false
+) {
+  const divEl = document.querySelector(`#${dayEl}`);
+  const temperatureEl = document.querySelector(`#${dayEl} .temperature-p`);
+  const weatherIcoEl = document.querySelector(`#${dayEl} i`);
+  const dayTextEl = document.querySelector(`#${dayEl} .day-p`);
 
   temperatureEl.textContent = `${temperature}°C`;
   updateWeatherIcon(weather, weatherIcoEl);
+  dayTextEl.textContent = dayName;
 
   if (isActive) {
   }

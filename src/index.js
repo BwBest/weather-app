@@ -11,7 +11,20 @@ function initalize() {
     ui.updateTemperature(value.currentTemp);
     ui.updateLocation(value.cityName, value.countryName);
     ui.updateWeatherIcon(value.forecastArray[0].condition);
+
+    configureDays();
   });
+}
+
+function configureDays() {
+  for (let i = 0; i < forecastArray.length; i++) {
+    ui.updateDay(
+      `day${i}`,
+      forecastArray[i].temperature,
+      forecastArray[i].condition,
+      forecastArray[i].dayName
+    );
+  }
 }
 
 async function getData() {
@@ -30,6 +43,9 @@ async function getData() {
   console.log(responseCurrent);
 
   const forecastsJSON = responseForecast.forecast.forecastday;
+
+  // Reset forecast array first
+  forecastArray.splice(0, forecastArray.length);
 
   forecastsJSON.forEach((item) => {
     const fDate = new Date(item.date);
