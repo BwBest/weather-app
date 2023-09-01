@@ -28,41 +28,45 @@ function configureDays() {
 }
 
 async function getData() {
-  const data = await fetch(
-    `https://api.weatherapi.com/v1/current.json?key=bb0f91bbe7304e7286c165412233008&q=${selectedCity}`,
-    { mode: 'cors' }
-  );
-  const forecastData = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=bb0f91bbe7304e7286c165412233008&q=${selectedCity}&days=7`,
-    { mode: 'cors' }
-  );
+  try {
+    const data = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=bb0f91bbe7304e7286c165412233008&q=${selectedCity}`,
+      { mode: 'cors' }
+    );
+    const forecastData = await fetch(
+      `https://api.weatherapi.com/v1/forecast.json?key=bb0f91bbe7304e7286c165412233008&q=${selectedCity}&days=7`,
+      { mode: 'cors' }
+    );
 
-  const responseCurrent = await data.json();
-  const responseForecast = await forecastData.json();
+    const responseCurrent = await data.json();
+    const responseForecast = await forecastData.json();
 
-  console.log(responseCurrent);
+    console.log(responseCurrent);
 
-  const forecastsJSON = responseForecast.forecast.forecastday;
+    const forecastsJSON = responseForecast.forecast.forecastday;
 
-  // Reset forecast array first
-  forecastArray.splice(0, forecastArray.length);
+    // Reset forecast array first
+    forecastArray.splice(0, forecastArray.length);
 
-  forecastsJSON.forEach((item) => {
-    const fDate = new Date(item.date);
-    forecastArray.push({
-      dayName: calculateDay(fDate.getDay()),
-      temperature: item.day.avgtemp_c,
-      condition: item.day.condition.code,
+    forecastsJSON.forEach((item) => {
+      const fDate = new Date(item.date);
+      forecastArray.push({
+        dayName: calculateDay(fDate.getDay()),
+        temperature: item.day.avgtemp_c,
+        condition: item.day.condition.code,
+      });
+      console.log(forecastArray);
     });
-    console.log(forecastArray);
-  });
 
-  return {
-    cityName: responseCurrent.location.name,
-    countryName: responseCurrent.location.country,
-    currentTemp: responseCurrent.current.temp_c,
-    forecastArray,
-  };
+    return {
+      cityName: responseCurrent.location.name,
+      countryName: responseCurrent.location.country,
+      currentTemp: responseCurrent.current.temp_c,
+      forecastArray,
+    };
+  } catch {
+    throw new Error("Couldn't get data from the server");
+  }
 }
 
 function calculateDay(day) {
