@@ -70,4 +70,33 @@ function calculateDay(day) {
   return days[day];
 }
 
+function enterSearchMode() {
+  const locationDiv = document.querySelector('#location-div');
+  const locationText = document.querySelector('#location-text');
+  const searchBox = document.querySelector('#search-box');
+  const input = document.querySelector('#search-box input');
+
+  locationDiv.classList.add('hidden');
+  searchBox.classList.remove('hidden');
+  input.value = locationText.textContent;
+}
+
+function changeLocation() {
+  const locationDiv = document.querySelector('#location-div');
+  const locationText = document.querySelector('#location-text');
+  const searchBox = document.querySelector('#search-box');
+  const input = document.querySelector('#search-box input');
+
+  locationDiv.classList.remove('hidden');
+  searchBox.classList.add('hidden');
+  selectedCity = input.value;
+  console.log('Change');
+  initalize();
+}
+
 window.addEventListener('load', initalize);
+document
+  .querySelector('#location-div')
+  .addEventListener('click', enterSearchMode);
+
+document.querySelector('#search-btn').addEventListener('click', changeLocation);

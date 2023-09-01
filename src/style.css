@@ -25,7 +25,7 @@ p{
 }
 
 .hidden{
-    display: none;
+    display: none !important;
 }
 
 #container{
@@ -44,6 +44,21 @@ p{
     display: flex;
     gap: 0.75rem;
     align-items: center;
+}
+
+#location-div:hover{
+    cursor: pointer;
+}
+
+#search-box input{
+    padding: 0.25rem 1rem;
+    margin-right: 0.5rem;
+    outline: none;
+    border: none;
+}
+
+#search-btn:hover{
+    cursor: pointer;
 }
 
 #weather-icon{
