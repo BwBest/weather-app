@@ -91,10 +91,18 @@ function changeLocation() {
   const searchBox = document.querySelector('#search-box');
   const input = document.querySelector('#search-box input');
 
+  //Form validation
+  if (input.value.length <= 1) {
+    input.setCustomValidity('Please enter a city name');
+    input.reportValidity();
+    return;
+  } else {
+    input.setCustomValidity('');
+  }
+
   locationDiv.classList.remove('hidden');
   searchBox.classList.add('hidden');
   selectedCity = input.value;
-  console.log('Change');
   initalize();
 }
 
